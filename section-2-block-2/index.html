@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./form.js" defer></script>
+    <title>Form</title>
+  </head>
+  <body>
+    <form action="https://example.com" method="post" class="form">
+      <h2 class="form__title">Contact info</h2>
+      <div class="form__user-info">
+        <label for="name" class="form__label">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          maxlength="30"
+          pattern="[\p{L}\s]+"
+          title="Username should be without numbers or spaces"
+          class="form__user-interaction"
+        />
+      </div>
+      <div class="form__user-info">
+        <label for="email" class="form__label">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          maxlength="100"
+          class="form__user-interaction"
+        />
+      </div>
+
+      <div class="form__user-info">
+        <label for="comments" class="form__label">Leave the comment</label>
+        <textarea
+          name="comments"
+          id="comments"
+          maxlength="200"
+          class="form__user-interaction"
+        ></textarea>
+      </div>
+      <button type="submit" class="form__submit-button">Отправить</button>
+    </form>
+    <div class="errors"></div>
+  </body>
+</html>
