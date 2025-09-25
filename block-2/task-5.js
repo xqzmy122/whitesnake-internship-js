@@ -1,15 +1,16 @@
 function findTwoIndices(array, target) {
-  const hash = {}
+  const hash = new Map()
 
   for(let i = 0; i < array.length; ++i) {
     const value = target - array[i]
 
-    if(hash[value] !== undefined) {
-      return [hash[value], i]
+    if(hash.has(value)) {
+      return [hash.get(value), i]
     }
 
-    hash[array[i]] = i
+    hash.set(array[i], i)
   }
 
   return "No matches"
 }
+
