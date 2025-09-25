@@ -1,4 +1,5 @@
 function getFloatOnString(str) {
-  const value = parseFloat(str)
-  return (value ? value : NaN)
+  return parseFloat(str)
 }
+
+console.log(getFloatOnString(''));
