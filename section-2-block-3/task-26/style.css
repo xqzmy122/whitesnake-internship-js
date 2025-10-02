@@ -1,3 +1,7 @@
+:root {
+  --button-bg: #b0a59b;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +30,7 @@ button:hover {
 .toggle-theme {
   font-size: 2rem;
   margin: 20px 0;
-  background-color: #b0a59b;
+  background-color: var(--button-bg);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -39,4 +43,5 @@ button:hover {
 .dark {
   background-color: #11120d;
   color: #fffbf4;
+  --button-bg: rgb(0, 0, 107);
 }

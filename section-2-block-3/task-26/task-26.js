@@ -1,23 +1,33 @@
-const toggleThemeButton = document.querySelector(".toggle-theme")
-const initialTheme = localStorage.getItem("theme")
+const toggleThemeButton = document.querySelector(".toggle-theme");
 
-toggleThemeButton.addEventListener("click", () => toggleTheme(localStorage.getItem("theme")))
+toggleThemeButton.addEventListener("click", () =>
+  toggleTheme(document.body.classList.contains("dark"))
+);
 
-if(initialTheme === "dark") {
-  document.body.classList.add("dark")
-  toggleThemeButton.textContent = "Светлая тема"
+if (localStorage.getItem("theme")) {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggleThemeButton.textContent = "Светлая тема";
+  }
+
+  toggleThemeButton.textContent = "Темная тема";
 } else {
-  toggleThemeButton.textContent = "Темная тема"
+  if (window.matchMedia("prefers-color-scheme: dark")) {
+    document.body.classList.add("dark");
+    toggleThemeButton.textContent = "Светлая тема";
+  } 
+
+  toggleThemeButton.textContent = "Темная тема";
 }
 
-function toggleTheme(theme) {
-  if(theme === "dark") {
-    toggleThemeButton.textContent = "Темная тема"
-    document.body.classList.toggle("dark")
-    localStorage.setItem("theme", "light")
+function toggleTheme(containsDark) {
+  if (containsDark) {
+    toggleThemeButton.textContent = "Темная тема";
+    document.body.classList.remove("dark");
+    localStorage.setItem("theme", "light");
   } else {
-    toggleThemeButton.textContent = "Светлая тема"
-    document.body.classList.toggle("dark")
-    localStorage.setItem("theme", "dark")
+    toggleThemeButton.textContent = "Светлая тема";
+    document.body.classList.add("dark");
+    localStorage.setItem("theme", "dark");
   }
 }

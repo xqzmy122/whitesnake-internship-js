@@ -1,9 +1,10 @@
 const tasks = document.querySelector(".tasks");
 
 tasks.addEventListener("click", (e) => {
-  if (e.target.textContent.replace(/\s+/g, "") === "Вверх") {
+  console.log();
+  if (e.target.closest(".task__button").className === "task__button task__button--up") {
     raiseElement(e.target.closest(".task"));
-  } else if (e.target.textContent.replace(/\s+/g, "") === "Вниз") {
+  } else if (e.target.closest(".task__button").className === "task__button task__button--down") {
     lowerElement(e.target.closest(".task"));
   }
 });
@@ -16,12 +17,5 @@ function raiseElement(el) {
 }
 
 function lowerElement(el) {
-  const nextSibling = el.nextElementSibling;
-  if (nextSibling) {
-    if (!nextSibling.nextElementSibling) {
-      tasks.appendChild(el);
-    } else {
-      tasks.insertBefore(el, nextSibling.nextElementSibling)
-    }
-  }
+  tasks.insertBefore(el, el.nextElementSibling?.nextElementSibling || null)
 }
