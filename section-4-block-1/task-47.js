@@ -1,4 +1,6 @@
-async function promiseAll(array) {
+function promiseAll(array) {
+  if(array.length === 0) return new Promise((res) => res([])
+  )
   return new Promise((resolve, reject) => {
     const results = []
     let counter = 0
