@@ -4,7 +4,7 @@ function flattenTree(tree) {
 
   if(tree.children.length !== 0) {
     for(let i = 0; i < tree.children.length; ++i) {
-      res = [...res.concat(flattenTree(tree.children[i]))]
+      res = res.concat(flattenTree(tree.children[i]))
     }
   } 
 
