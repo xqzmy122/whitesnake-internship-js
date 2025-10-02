@@ -9,7 +9,7 @@ form.addEventListener("submit", (e) => validate(e))
 function validate(e) {
   let errors = []
 
-  if (nameInput.value === "" || nameInput.value === null) {
+  if (nameInput.value.trim() === "" || nameInput.value === null) {
     errors.push("Name is required")
   }
 
