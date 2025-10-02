@@ -1,17 +1,24 @@
 function countValues(obj) {
-  const newObj = {}
+  const newObj = Object.create(null)
 
   const values = Object.values(obj)
   
   for(let i = 0; i < values.length; ++i) {
 
-    if(newObj[values[i]] !== undefined) {
-      newObj[values[i]] = newObj[values[i]] + 1
+    if(newObj[JSON.stringify(values[i])] !== undefined) {
+      newObj[JSON.stringify(values[i])] = newObj[JSON.stringify(values[i])] + 1
       continue
     }
 
-    newObj[values[i]] = 1 
+    newObj[JSON.stringify(values[i])] = 1 
   }
 
   return newObj
 }
+
+console.log(countValues({
+  name: 2,
+  age: NaN,
+  parents: undefined,
+  year: NaN
+}));
