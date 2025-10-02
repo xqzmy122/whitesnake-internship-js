@@ -25,8 +25,6 @@ function isSantaClausable(obj) {
     ["goDownTheChimney", "go_down_the_chimney"],
   ];
 
-  const keys = Object.keys(obj);
-
   for (const [m1, m2] of methodsToCheck) {
     if (typeof obj[m1] === "function" || typeof obj[m2] === "function") {
       continue;
