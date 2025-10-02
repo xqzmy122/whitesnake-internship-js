@@ -12,19 +12,14 @@ class Animal {
 }
 
 class Shark extends Animal {
-  legs = 0
-  species = "shark"
   constructor(name, age, status) {
-    super(name, age, status);
+    super(name, age, 0, "shark", status);
   }
 }
 
 class Cat extends Animal {
-  leg = 4
-  species = "cat"
-
   constructor(name, age, status) {
-    super(name, age, status);
+    super(name, age, 4, "cat", status);
   }
 
   introduce() {
@@ -33,14 +28,12 @@ class Cat extends Animal {
 }
 
 class Dog extends Animal {
-  legs = 4
-  species = "dog"
   constructor(name, age, status, master) {
-    super(name, age, status)
+    super(name, age, 4, "dog", status)
     this.master = master
   }
 
-  greedMaster() {
+  greetMaster() {
     return `Hello ${this.master}`
   }
 }

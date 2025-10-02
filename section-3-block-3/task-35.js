@@ -14,28 +14,28 @@ let notSanta = {
   sayHoHoHo: function () {
     console.log("Oink Oink!");
   },
+
   // no distributeGifts() and no goDownTheChimney()
 };
 
 function isSantaClausable(obj) {
-
   const methodsToCheck = [
     ["sayHoHoHo", "say_ho_ho_ho"],
     ["distributeGifts", "distribute_gifts"],
     ["goDownTheChimney", "go_down_the_chimney"],
-  ]
+  ];
 
-  const keys = Object.keys(obj)
+  const keys = Object.keys(obj);
 
-  for(let i = 0; i < methodsToCheck.length; ++i) {
-    const hasMethod = methodsToCheck[i].some((el) => keys.includes(el) && typeof obj[el] === "function")
+  for (const [m1, m2] of methodsToCheck) {
+    if (typeof obj[m1] === "function" || typeof obj[m2] === "function") {
+      continue;
 
-    if (!hasMethod) {
-      return false;
     }
+    return false;
   }
 
-  return true
+  return true;
 }
 
 console.log(isSantaClausable(santa));
