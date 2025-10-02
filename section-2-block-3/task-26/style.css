@@ -1,0 +1,47 @@
+:root {
+  --button-bg: #b0a59b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  padding: 5px;
+  transition: 0.5s;
+  background-color: #e0d8cd;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.toggle-theme {
+  font-size: 2rem;
+  margin: 20px 0;
+  background-color: var(--button-bg);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+.dark {
+  background-color: #11120d;
+  color: #fffbf4;
+  --button-bg: rgb(0, 0, 107);
+}
