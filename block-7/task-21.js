@@ -1,12 +1,12 @@
 function createSecretHolder(secret) {
-  this.secret = secret
+  let _secret = secret
 
   return {
     getSecret: () => {
-      return this.secret
+      return _secret
     },
     setSecret: (value) => {
-      this.secret = value
+      _secret = value
     }
   }
 }
