@@ -1,5 +1,13 @@
 function cutFirstAndLast(str) {
-  if (str.length <= 2) return null
+  if(typeof str !== "string") return null
 
-  return str.substring(2, str.length - 2).replace(/,/g, " ")
+  const array = str.split(",")
+
+  if (array.length <= 2) return null
+
+  return array.map((el, i) => {
+    if(i !== 0 && i !== array.length - 1) {
+      return el
+    }
+  }).join(" ") 
 }
