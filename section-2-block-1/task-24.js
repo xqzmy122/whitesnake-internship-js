@@ -1,5 +1,3 @@
-let tasksCounter = 0;
-
 const addButton = document.querySelector(".main__button");
 const tasksContainer = document.querySelector(".tasks");
 const mainContainer = document.querySelector(".main");
@@ -12,16 +10,13 @@ addButton.addEventListener("click", addTask);
 tasksContainer.addEventListener("click", (e) => deleteTask(e.target));
 
 function addTask() {
-  if (tasksCounter === 0) mainContainer.removeChild(noElements);
+  if (tasksContainer.children.length === 0) updateEmptyState("delete")
 
-  tasksCounter += 1;
   const task = document.createElement("div");
-
   const taskText = document.createElement("p");
-  taskText.textContent = `Task #${tasksCounter}`;
+  taskText.textContent = `Task #${tasksContainer.children.length + 1}`;
 
   const taskDeleteButton = document.createElement("button");
-  taskDeleteButton.setAttribute("id", `${tasksCounter}`);
   taskDeleteButton.textContent = "Delete";
   taskDeleteButton.className = "task__button";
 
@@ -33,19 +28,27 @@ function addTask() {
 }
 
 function deleteTask(target) {
-  if (target.tagName === "BUTTON") {
-    tasksCounter -= 1;
+  if (target.matches(".task__button")) {
     const taskToDelete = target.parentElement;
     tasksContainer.removeChild(taskToDelete);
+
+    Array.from(tasksContainer.children).forEach((child, i) => {
+      child.children[0].textContent = `Task #${i + 1}`
+    })
   }
 
-  if (!tasksCounter) {
-    mainContainer.appendChild(noElements);
-  }
+  if(!tasksContainer.children.length) updateEmptyState("add")
 }
 
-/*
-  Еще уточнение, если бы у меня обработчики навешивались на кнопки delete, то да, 
-  в таком случае нужно их удалять при удалении самой кнопки, но разве при делегировании событий нужно удалять
-  главный обработчик, который работает на протяжении всей программы?
-*/
+function updateEmptyState(str) {
+  switch (str) {
+    case "delete":
+      mainContainer.removeChild(noElements)
+      break;
+    case "add":
+      mainContainer.appendChild(noElements);
+      break;
+    default:
+      break;
+  }
+}
