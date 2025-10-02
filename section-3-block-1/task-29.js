@@ -1,10 +1,6 @@
 function partial(fn, ...args) {
   return (...args2) => {
-    if(args2.length + args.length === fn.length) {
-      return fn(...args, ...args2)
-    } else {
-      return "Wrong number of arguments"
-    }
+    return fn(...args, ...args2)
   }
 }
 
